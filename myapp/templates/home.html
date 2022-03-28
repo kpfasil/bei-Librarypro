@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home |
+{% endblock title %}
+
+
+{% block header %}
+<header class="header" id="header">
+
+    <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+    <div class="d-flex justify-content-left">
+        <div> Welcome , {{request.user}}</div>
+    </div>
+    <div><a href="/logout/" class="btn btn-primary ml-2">Login User</a></div>
+</header>
+{% endblock header %}
+
+{% block content %}
+<div class="data height-100 bg-light">
+    <img class="w-100" src="/media/library.jpg" alt="">
+    <div class="centered">
+        <h1 class="shadow  rounded" style="color:red  ;text-shadow: 2px 2px black;">
+            Welcome to our library management system we have different categories of book issue your first book
+            Now!!!!
+        </h1>
+    </div>
+</div>
+{% endblock content %}

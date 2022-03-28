@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+User |
+{% endblock title %}
+
+
+{% block header %}
+<header class="header" id="header">
+    <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+    <div class="d-flex justify-content-left"> 
+        
+        {% if request.user.is_superuser %}
+        <a href="/adduser/" class="btn btn-primary ml-2">Add User</a>
+        {% endif %}
+            
+    
+    <a href="/user/" class="btn btn-primary ml-2">List User</a>
+    <a href="/logout/" class="btn btn-primary ml-2">Login User</a>
+  
+  </div>
+    
+</header>
+{% endblock header %}
+
+{% block content %}
+<div style="color: black;" class="text-center bg-light">
+    <h1>List of Users</h1>
+    <div class="container">
+    <div class="row">
+      {% for fm in all_user %}    
+      <div class="col-4">
+        <div class="card">
+          <img style="height: 200px;border-radius: 50%;" class="card-img-top" src="{{fm.profile.profile_image.url}}" alt="Card image cap">
+          <div class="card-body">
+            <p class="card-text text-danger">First Name : {{fm.first_name}}</p>
+            <p class="card-text"> Last Name : {{fm.last_name}}</p>
+            <p class="card-text">Email : {{fm.email}}</p>
+          </div>
+        </div>
+      </div>
+        {% endfor %}
+  
+     
+    </div>
+  </div>
+  </div>
+{% endblock content %}

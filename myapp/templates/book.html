@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+Book |
+{% endblock title %}
+
+
+{% block header %}
+<header class="header" id="header">
+
+  <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+  <div class="d-flex justify-content-left">
+      <div> Welcome , {{request.user}}</div>
+      <div><a href="/logout/" class="btn btn-primary ml-2">Login User</a></div>
+  </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+<div style="color: black;" class="text-center bg-light">
+  <h1>List of Books</h1>
+  <div class="container">
+  <div class="row">
+    {% for fm in all_book %}
+    <div class="col-4 h-100">
+      <div class="card">
+        <img class="card-img-top" src="{{fm.image.url}}" alt="Card image cap">
+        <div class="card-body">
+          <p class="card-text text-danger">{{fm}}</p>
+          <p class="card-text">Author : {{fm.author}}</p>
+          <p class="card-text">Description : {{fm.description}}</p>
+          <p><a href="{% url 'add' fm.id %}" class="btn btn-primary">
+           Issue Books
+          </a></p>
+            
+          
+        </div>
+      </div>
+    </div>
+    <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
+      {% endfor %}
+
+   
+  </div>
+  
+</div>
+
+</div>
+
+{% endblock content %}

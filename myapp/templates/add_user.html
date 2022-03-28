@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add User |
+{% endblock title %}
+
+
+{% block header %}
+<header class="header" id="header">
+    <div class="header_toggle"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+    <div class="d-flex justify-content-left">
+        <a href="/adduser/" class="btn btn-primary ml-2">Add User</a>
+        <a href="/user/" class="btn btn-primary ml-2">List User</a>
+       <a href="/logout/" class="btn btn-primary ml-2">Login User</a>
+    </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+<div style="color: black;" class="height-100 text-center bg-light">
+    <h1>Add User</h1>
+    <div class="container">
+        <div class="row">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+                <strong>{{message}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <div class="row">
+           
+            <div class="col-4"></div>
+            <div class="col-4">
+        <form class="shadow p-3 mt-5 mb-5 rounded" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for fm in form %}
+            <div class="form-group">
+
+                
+                {% if fm.name == 'username' %}
+                <small class="text-danger">{{fm.errors|striptags}}</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class='bx bxs-user bx-burst bx-rotate-90' ></i></span>
+                    </div>
+                   {{fm}}
+                </div>
+
+                {% elif fm.name == 'password1' %}
+                <small class="text-danger">{{fm.errors|striptags}}</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class='bx bxs-lock-alt bx-burst' ></i></span>
+                    </div>
+                   {{fm}}
+                </div>
+
+                {% elif fm.name == 'password2' %}
+                <small class="text-danger">{{fm.errors|striptags}}</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class='bx bxs-lock-alt bx-burst' ></i></span>
+                    </div>
+                   {{fm}}
+                </div>
+                {% elif fm.name == 'first_name' %}
+                <small class="text-danger">{{fm.errors|striptags}}</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class='bx bxs-user bx-burst bx-rotate-90' ></i></span>
+                    </div>
+                   {{fm}}
+                </div>
+
+                {% elif fm.name == 'last_name' %}
+                <small class="text-danger">{{fm.errors|striptags}}</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class='bx bxs-user bx-burst bx-rotate-90' ></i></span>
+                    </div>
+                   {{fm}}
+                </div>
+
+                {% elif fm.name == 'email' %}
+                <small class="text-danger">{{fm.errors|striptags}}</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class='bx bxs-envelope bx-burst' ></i></span>
+                    </div>
+                   {{fm}}
+                </div>
+               
+
+                {% elif fm.name == 'profile_image' %}
+                <small class="text-danger">{{fm.errors|striptags}}</small>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1"><i class='bx bxs-image-add bx-burst' ></i></span>
+                    </div>
+                   {{fm}}
+                </div>
+                {% endif %}
+                
+                    
+            
+            </div>
+            {% endfor %}
+            <button class="btn btn-primary btn-block" type="submit"><i class='bx bx-user-plus nav_icon'></i> User</button>
+        </form>
+    </div>
+    <div class="col-4"></div>
+    </div>
+</div>
+</div>
+{% endblock content %}
